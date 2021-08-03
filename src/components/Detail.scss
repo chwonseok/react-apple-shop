@@ -1,0 +1,30 @@
+@import '../_reset.scss';
+
+$main-color: #0011ff;
+
+.container {
+  .label {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+    font-size: 20px;
+    color: $main-color;
+  }
+
+  .item-alert {
+    text-align: center;
+    background: #eeeeee;
+    padding: 20px;
+    border-radius: 5px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.item-alert-red {
+  @extend .item-alert;
+  color: red;
+}

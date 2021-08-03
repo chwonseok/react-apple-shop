@@ -1,0 +1,16 @@
+.app a {
+  text-decoration: none;
+}
+
+.link a {
+  padding-top: 5px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.link a:hover {
+  color: #121212;
+}
+
+.link a:first-child {
+  margin-right: 5px;
+}

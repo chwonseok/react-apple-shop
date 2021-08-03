@@ -1,20 +1,31 @@
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import Items from './components/Items';
-import Jumbotron from './components/Jumbotron';
+import { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import Jumbotron from './components/Jumbotron';
+import Items from './components/Items';
 import Detail from './components/Detail';
+import classes from './App.module.css';
+
+import Data from './db/data';
 
 export default function App() {
+  const [shoes] = useState(Data);
+
   return (
-    <div>
+    <div className={classes.app}>
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">WS Shop</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+            <Nav className={classes.link}>
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/detail">
+                Detail
+              </Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -33,13 +44,18 @@ export default function App() {
         </Container>
       </Navbar>
 
-      <Route exact path="/">
-        <Jumbotron />
-        <Items />
-      </Route>
-      <Route path="/detail">
-        <Detail />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <Jumbotron />
+          <Items shoes={shoes} />
+        </Route>
+        <Route path="/detail/:id">
+          <Detail shoes={shoes} />
+        </Route>
+        {/* <Route path="/:id">
+          <div>아무거나</div>
+        </Route> Switch 사용했을 때 차이점 배움 */}
+      </Switch>
     </div>
   );
 }

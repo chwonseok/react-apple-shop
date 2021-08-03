@@ -1,11 +1,7 @@
 import './Items.css';
-import Data from '../db/data';
 import Item from './Item';
-import { useState } from 'react';
 
-export default function Items() {
-  const [shoes, setShoes] = useState(Data);
-
+export default function Items({ shoes }) {
   return (
     <div className="container">
       <div className="row">

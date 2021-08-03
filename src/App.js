@@ -1,6 +1,8 @@
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import Items from './components/Items';
 import Jumbotron from './components/Jumbotron';
+import { Link, Route, Switch } from 'react-router-dom';
+import Detail from './components/Detail';
 
 export default function App() {
   return (
@@ -31,9 +33,13 @@ export default function App() {
         </Container>
       </Navbar>
 
-      <Jumbotron />
-
-      <Items />
+      <Route exact path="/">
+        <Jumbotron />
+        <Items />
+      </Route>
+      <Route path="/detail">
+        <Detail />
+      </Route>
     </div>
   );
 }

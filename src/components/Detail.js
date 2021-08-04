@@ -8,11 +8,11 @@ export default function Detail({ shoes }) {
     return cur.id === +id;
   });
   const history = useHistory();
-  const [warn, setWarn] = useState(true);
+  const [alert, setAlert] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setWarn(false);
+      setAlert(false);
     }, 2000);
   });
 
@@ -27,7 +27,7 @@ export default function Detail({ shoes }) {
         <h2>Detail</h2>
       </div>
 
-      {warn ? (
+      {alert ? (
         <div className="item-alert">
           <p>Almost Being SOLD-OUT Soon!</p>
         </div>

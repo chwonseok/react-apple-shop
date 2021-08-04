@@ -9,12 +9,21 @@ export default function Detail({ shoes }) {
   });
   const history = useHistory();
   const [alert, setAlert] = useState(true);
+  const [test, setTest] = useState('');
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setAlert(false);
     }, 2000);
-  });
+    console.log(timer);
+    return () => {
+      clearTimeout(timer); // bug 방지할 수 있는 안전장치 from ex: timer가 다 가기 전에 페이지 변경하는 등의 경우
+    };
+  }, []);
+
+  function testHandler(e) {
+    setTest(e.target.value);
+  }
 
   function backHandler() {
     history.push('/');
@@ -26,6 +35,9 @@ export default function Detail({ shoes }) {
       <div className="label">
         <h2>Detail</h2>
       </div>
+
+      {test}
+      <input onChange={testHandler} />
 
       {alert ? (
         <div className="item-alert">

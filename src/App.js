@@ -14,12 +14,15 @@ export default function App() {
   const [shoes, setShoes] = useState(Data);
 
   function moreInfoHandler() {
+    // 로딩중이라는 UI 띄우기 (해볼 숙제)
     axios
       .get(`https://codingapple1.github.io/shop/data2.json`)
       .then((res) => {
+        // 로딩중이라는 UI 삭제
         setShoes([...shoes, ...res.data]);
       })
       .catch(() => {
+        // 로딩중이라는 UI 띄우기
         console.log('failed');
       });
   }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import Jumbotron from './components/Jumbotron';
@@ -10,7 +11,18 @@ import classes from './App.module.css';
 import Data from './db/data';
 
 export default function App() {
-  const [shoes] = useState(Data);
+  const [shoes, setShoes] = useState(Data);
+
+  function moreInfoHandler() {
+    axios
+      .get(`https://codingapple1.github.io/shop/data2.json`)
+      .then((res) => {
+        setShoes([...shoes, ...res.data]);
+      })
+      .catch(() => {
+        console.log('failed');
+      });
+  }
 
   return (
     <div className={classes.app}>
@@ -56,6 +68,9 @@ export default function App() {
           <div>아무거나</div>
         </Route> Switch 사용했을 때 차이점 배움 */}
       </Switch>
+      <button className="btn btn-primary" onClick={moreInfoHandler}>
+        More
+      </button>
     </div>
   );
 }

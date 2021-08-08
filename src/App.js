@@ -12,6 +12,7 @@ import Data from './db/data';
 
 export default function App() {
   const [shoes, setShoes] = useState(Data);
+  const [stock, setStock] = useState([10, 11, 12]);
 
   function moreInfoHandler() {
     // 로딩중이라는 UI 띄우기 (해볼 숙제)
@@ -65,7 +66,7 @@ export default function App() {
           <Items shoes={shoes} />
         </Route>
         <Route path="/detail/:id">
-          <Detail shoes={shoes} />
+          <Detail shoes={shoes} stock={stock} setStock={setStock} />
         </Route>
         {/* <Route path="/:id">
           <div>아무거나</div>

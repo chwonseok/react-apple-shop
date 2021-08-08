@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import './Detail.scss';
+import Stock from './Stock';
 
-export default function Detail({ shoes }) {
+export default function Detail({ shoes, stock, setStock }) {
   const { id } = useParams();
   const product = shoes.find((cur) => {
     return cur.id === +id;
@@ -15,11 +16,14 @@ export default function Detail({ shoes }) {
     const timer = setTimeout(() => {
       setAlert(false);
     }, 2000);
-    console.log(timer);
     return () => {
       clearTimeout(timer); // bug 방지할 수 있는 안전장치 from ex: timer가 다 가기 전에 페이지 변경하는 등의 경우
     };
   }, []);
+
+  function orderHandler() {
+    setStock([9, 10, 11]);
+  }
 
   function testHandler(e) {
     setTest(e.target.value);
@@ -57,7 +61,12 @@ export default function Detail({ shoes }) {
           <h4 className="pt-5">{product.title}</h4>
           <p>{product.content}</p>
           <p>{product.price}</p>
-          <button className="btn btn-danger">Order</button>
+
+          <Stock stock={stock} />
+
+          <button className="btn btn-danger" onClick={orderHandler}>
+            Order
+          </button>
           <button className="btn btn-danger" onClick={backHandler}>
             Go back
           </button>

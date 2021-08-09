@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,6 +9,8 @@ import Detail from './components/Detail';
 import classes from './App.module.css';
 
 import Data from './db/data';
+
+const stockContext = React.createContext();
 
 export default function App() {
   const [shoes, setShoes] = useState(Data);

@@ -2,7 +2,6 @@ import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 function Cart(props) {
-  console.log(props);
   return (
     <Table striped bordered hover>
       <thead>

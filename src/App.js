@@ -11,7 +11,7 @@ import classes from './App.module.css';
 import Data from './db/data';
 import Cart from './components/Cart';
 
-const stockContext = React.createContext();
+// const stockContext = React.createContext();
 
 export default function App() {
   const [shoes, setShoes] = useState(Data);

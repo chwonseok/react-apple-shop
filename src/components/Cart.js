@@ -6,9 +6,9 @@ export default function Cart() {
       <thead>
         <tr>
           <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Change</th>
         </tr>
       </thead>
       <tbody>

@@ -9,6 +9,7 @@ import Detail from './components/Detail';
 import classes from './App.module.css';
 
 import Data from './db/data';
+import Cart from './components/Cart';
 
 const stockContext = React.createContext();
 
@@ -66,17 +67,24 @@ export default function App() {
         <Route exact path="/">
           <Jumbotron />
           <Items shoes={shoes} />
+          <button className="btn btn-primary" onClick={moreInfoHandler}>
+            More
+          </button>
         </Route>
+
         <Route path="/detail/:id">
           <Detail shoes={shoes} stock={stock} setStock={setStock} />
         </Route>
-        {/* <Route path="/:id">
-          <div>아무거나</div>
-        </Route> Switch 사용했을 때 차이점 배움 */}
+
+        <Route path="/cart">
+          <Cart />
+        </Route>
+
+        <Route path="/:id">
+          <div>아무거나 적었다면 이 페이지가 뜰 것임</div>
+        </Route>
+        {/* Switch 사용했을 때 차이점 배움 */}
       </Switch>
-      {/* <button className="btn btn-primary" onClick={moreInfoHandler}>
-        More
-      </button> */}
     </div>
   );
 }

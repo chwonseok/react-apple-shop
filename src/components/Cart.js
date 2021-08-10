@@ -1,6 +1,8 @@
 import { Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-export default function Cart() {
+function Cart(props) {
+  console.log(props);
   return (
     <Table striped bordered hover>
       <thead>
@@ -13,7 +15,7 @@ export default function Cart() {
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <td>{props.state[0].name}</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
@@ -33,3 +35,13 @@ export default function Cart() {
     </Table>
   );
 }
+
+// ⬇️: redux store에 있는 데이터를 가져와서 props로 변환해주는 함수
+function funcName(state) {
+  return {
+    state: state,
+  };
+}
+
+export default connect(funcName)(Cart);
+// export default Cart <-- 이렇게 처리해줘야 함!

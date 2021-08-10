@@ -28,3 +28,13 @@ $main-color: #0011ff;
   @extend .item-alert;
   color: red;
 }
+
+// CSSTransition 설정 방법 1) classNames에 '-enter'붙여주면 애니메이션 시작 때 적용할 CSS
+.wow-enter {
+  opacity: 0;
+}
+// CSSTransition 설정 방법 2) classNames에 '-enter'붙여주면 애니메이션 동작 때 적용할 CSS
+.wow-enter-active {
+  opacity: 1;
+  transition: all 1000ms;
+}

@@ -74,9 +74,9 @@ export default function App() {
           <div>아무거나</div>
         </Route> Switch 사용했을 때 차이점 배움 */}
       </Switch>
-      <button className="btn btn-primary" onClick={moreInfoHandler}>
+      {/* <button className="btn btn-primary" onClick={moreInfoHandler}>
         More
-      </button>
+      </button> */}
     </div>
   );
 }

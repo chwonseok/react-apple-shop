@@ -2,6 +2,7 @@ import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 function Cart(props) {
+  console.log(props.state);
   return (
     <Table striped bordered hover>
       <thead>
@@ -13,18 +14,22 @@ function Cart(props) {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        {props.state.map((cur, i) => {
+          return (
+            <tr key={i}>
+              <td>{cur.id}</td>
+              <td>{cur.name}</td>
+              <td>{cur.quantity}</td>
+              <td>null</td>
+            </tr>
+          );
+        })}
+        {/* <tr>
           <td>{props.state[0].name}</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
+        </tr> */}
       </tbody>
     </Table>
   );

@@ -2,7 +2,11 @@ import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 function Cart(props) {
-  console.log(props.state);
+  console.log(props);
+  function plusQuantity() {
+    return props.dispatch({ type: 'plus' });
+  }
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -20,7 +24,9 @@ function Cart(props) {
               <td>{cur.id}</td>
               <td>{cur.name}</td>
               <td>{cur.quantity}</td>
-              <td>null</td>
+              <td>
+                <button onClick={plusQuantity}>+</button>
+              </td>
             </tr>
           );
         })}
@@ -36,6 +42,7 @@ function Cart(props) {
 }
 
 // ⬇️: redux store에 있는 데이터를 가져와서 props로 변환해주는 함수
+// 아래의 경우 state는 store에 있는 모든 Data
 function funcName(state) {
   return {
     state: state,

@@ -2,9 +2,12 @@ import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 function Cart(props) {
-  console.log(props);
   function plusQuantity() {
     return props.dispatch({ type: 'plus' });
+  }
+
+  function minusQuantity() {
+    return props.dispatch({ type: 'minus' });
   }
 
   return (
@@ -26,6 +29,7 @@ function Cart(props) {
               <td>{cur.quantity}</td>
               <td>
                 <button onClick={plusQuantity}>+</button>
+                <button onClick={minusQuantity}>-</button>
               </td>
             </tr>
           );

@@ -17,10 +17,17 @@ const store = createStore(reducer);
 // reducer는 항상 state를 퉤 뱉어야 함
 function reducer(state = defaultState, action) {
   if (action.type === 'plus') {
-    const modifiedState = [...state];
-    modifiedState[0].quantity++;
+    const statePlus = [...state];
+    statePlus[0].quantity++;
 
-    return modifiedState;
+    return statePlus;
+  } else if (action.type === 'minus') {
+    const stateMinus = [...state];
+
+    stateMinus[0].quantity--;
+    if (stateMinus[0].quantity < 0) stateMinus[0].quantity = 0;
+
+    return stateMinus;
   } else {
     return state;
   }

@@ -5,10 +5,11 @@ import Stock from './Stock';
 import TabContent from './TabContent';
 import { Nav } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 
-export default function Detail({ shoes, stock, setStock }) {
+function Detail(props) {
   const { id } = useParams();
-  const product = shoes.find((cur) => {
+  const product = props.shoes.find((cur) => {
     return cur.id === +id;
   });
   const history = useHistory();
@@ -26,7 +27,12 @@ export default function Detail({ shoes, stock, setStock }) {
   }, []);
 
   function orderHandler() {
-    setStock([9, 10, 11]);
+    props.setStock([9, 10, 11]);
+    props.dispatch({
+      type: 'addItem',
+      payload: { id: 2, name: 'new shoes', quantity: 1 },
+    });
+    history.push('/cart');
   }
 
   function backHandler() {
@@ -59,7 +65,7 @@ export default function Detail({ shoes, stock, setStock }) {
           <p>{product.content}</p>
           <p>{product.price}</p>
 
-          <Stock stock={stock} />
+          <Stock stock={props.stock} />
 
           <button className="btn btn-danger" onClick={orderHandler}>
             Order
@@ -111,3 +117,13 @@ export default function Detail({ shoes, stock, setStock }) {
     </div>
   );
 }
+
+function stateToProps(state) {
+  console.log(state);
+  return {
+    items: state.itemReducer,
+    alert: state.alertReducer,
+  };
+}
+
+export default connect(stateToProps)(Detail);

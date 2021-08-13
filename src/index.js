@@ -27,18 +27,22 @@ const itemState = [
 // ➡️ Redux를 이용한 state 수정 방법!!! Redux에선 state 데이터의 수정방법을 미리 정의해야 함 ⬇️
 // reducer는 항상 state를 퉤 뱉어야 함
 function itemReducer(state = itemState, action) {
-  if (action.type === 'plus') {
-    const statePlus = [...state];
-    statePlus[0].quantity++;
+  if (action.type === 'addItem') {
+    const copy = [...state];
+    copy.push(action.payload);
+    return copy;
+  } else if (action.type === 'plus') {
+    const copy = [...state];
+    copy[0].quantity++;
 
-    return statePlus;
+    return copy;
   } else if (action.type === 'minus') {
-    const stateMinus = [...state];
+    const copy = [...state];
 
-    stateMinus[0].quantity--;
-    if (stateMinus[0].quantity < 0) stateMinus[0].quantity = 0;
+    copy[0].quantity--;
+    if (copy[0].quantity < 0) copy[0].quantity = 0;
 
-    return stateMinus;
+    return copy;
   } else {
     return state;
   }

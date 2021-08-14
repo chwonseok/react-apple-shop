@@ -83,7 +83,6 @@ export default function App() {
         <Route path="/:id">
           <div>아무거나 적었다면 이 페이지가 뜰 것임</div>
         </Route>
-        {/* Switch 사용했을 때 차이점 배움 */}
       </Switch>
     </div>
   );

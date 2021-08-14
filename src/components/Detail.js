@@ -22,7 +22,8 @@ function Detail(props) {
       setAlert(false);
     }, 2000);
     return () => {
-      clearTimeout(timer); // bug 방지할 수 있는 안전장치 from ex: timer가 다 가기 전에 페이지 변경하는 등의 경우
+      // bug 방지할 수 있는 안전장치 from ex: timer가 다 가기 전에 페이지 변경하는 등의 경우
+      clearTimeout(timer);
     };
   }, []);
 
@@ -37,7 +38,7 @@ function Detail(props) {
 
   function backHandler() {
     history.push('/');
-    // history.goBack();
+    // history.goBack(); 이 코드도 같은 용도로 사용할 수 있음
   }
 
   return (

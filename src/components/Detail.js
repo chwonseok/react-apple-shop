@@ -120,7 +120,6 @@ function Detail(props) {
 }
 
 function stateToProps(state) {
-  console.log(state);
   return {
     items: state.itemReducer,
     alert: state.alertReducer,

@@ -24,6 +24,8 @@ $main-color: #0011ff;
   }
 }
 
+// 위의 .item-alert와 같지만 조금만 다른 코드가 필요할 경우 아래처럼..
+// "@mixin 함수()" 도 사용 가능
 .item-alert-red {
   @extend .item-alert;
   color: red;

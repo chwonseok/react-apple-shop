@@ -33,16 +33,17 @@ export default function App() {
 
   return (
     <div className={classes.app}>
+      {/*** NAV ***/}
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">WS Shop</Navbar.Brand>
+          <Navbar.Brand href="/">WS Shop</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className={classes.link}>
               <Nav.Link as={Link} to="/">
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/detail">
+              <Nav.Link as={Link} to="/detail/0">
                 Detail
               </Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -62,7 +63,7 @@ export default function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
+      {/*** MAIN ***/}
       <Switch>
         <Route exact path="/">
           <Jumbotron />
@@ -72,14 +73,17 @@ export default function App() {
           </button>
         </Route>
 
+        {/*** DETAIL page ***/}
         <Route path="/detail/:id">
           <Detail shoes={shoes} stock={stock} setStock={setStock} />
         </Route>
 
+        {/*** CART page ***/}
         <Route path="/cart">
           <Cart />
         </Route>
 
+        {/*** WRONG PATH page ***/}
         <Route path="/:id">
           <div>아무거나 적었다면 이 페이지가 뜰 것임</div>
         </Route>

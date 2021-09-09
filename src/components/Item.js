@@ -1,15 +1,15 @@
-export default function Item({ datas }) {
+export default function Item({ data }) {
   return (
     <>
       <div className="col-md-4">
         <img
-          src={`https://codingapple1.github.io/shop/shoes${datas.id + 1}.jpg`}
+          src={`https://codingapple1.github.io/shop/shoes${data.id + 1}.jpg`}
           width="100%"
           alt="shoes"
         />
-        <h4>{datas.title}</h4>
+        <h4>{data.title}</h4>
         <p>
-          {datas.content}, {datas.price}
+          {data.content}, {data.price}
         </p>
       </div>
     </>

@@ -5,7 +5,6 @@ import Stock from './Stock';
 import TabContent from './TabContent';
 import { Nav } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
-import { connect } from 'react-redux';
 
 export default function Detail(props) {
   const { id } = useParams();

@@ -1,8 +1,8 @@
+import React from 'react';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 function Cart(props) {
-  console.log(props.myName);
   return (
     <>
       <Table striped bordered hover variant="dark">
@@ -39,8 +39,9 @@ function Cart(props) {
 }
 
 function storeToProps(state) {
+  console.log(state);
   return {
-    myName: state,
+    state: state,
   };
 }
 

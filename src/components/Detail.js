@@ -7,7 +7,7 @@ import { Nav } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 
-function Detail(props) {
+export default function Detail(props) {
   const { id } = useParams();
   const product = props.shoes.find((cur) => {
     return cur.id === +id;
@@ -22,20 +22,14 @@ function Detail(props) {
       setAlert(false);
     }, 2000);
     return () => {
-      // bug 방지할 수 있는 안전장치 from ex: timer가 다 가기 전에 페이지 변경하는 등의 경우
+      // bug 방지하는 안전장치 (ex: timer가 다 가기 전에 페이지 변경하는 등의 경우)
       clearTimeout(timer);
     };
   }, []);
 
   function orderHandler() {
     props.setStock([9, 10, 11]);
-    props.dispatch({
-      type: 'addItem',
-      payload: { id: 2, name: 'new shoes', quantity: 1 },
-    });
-    history.push('/cart');
   }
-
   function backHandler() {
     history.push('/');
     // history.goBack(); 이 코드도 같은 용도로 사용할 수 있음
@@ -112,18 +106,9 @@ function Detail(props) {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <CSSTransition in={tabStyle} classNames="wow" timeout={500}>
+      <CSSTransition in={tabStyle} classNames="wow" timeout={1000}>
         <TabContent tab={tab} setTabStyle={setTabStyle} />
       </CSSTransition>
     </div>
   );
 }
-
-function stateToProps(state) {
-  return {
-    items: state.itemReducer,
-    alert: state.alertReducer,
-  };
-}
-
-export default connect(stateToProps)(Detail);

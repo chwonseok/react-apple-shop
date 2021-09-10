@@ -1,4 +1,3 @@
-import './Items.css';
 import Item from './Item';
 
 export default function Items({ shoes }) {

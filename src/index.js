@@ -15,9 +15,9 @@ import App from './App';
 
 const store = createStore(() => {
   return [
-    { id: 0, name: 'awesome shoes', quantity: 3 },
-    { id: 1, name: 'strong shoes', quantity: 4 },
-    { id: 2, name: 'cool shoes', quantity: 1 },
+    { id: 0, name: 'awesome shoes', quantity: 3, price: 120000 },
+    { id: 1, name: 'strong shoes', quantity: 4, price: 80000 },
+    { id: 2, name: 'cool shoes', quantity: 1, price: 100000 },
   ];
 });
 

@@ -2,7 +2,8 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-function Cart(props) {
+// { state } : props.state의 간략한 형태
+function Cart({ state }) {
   return (
     <>
       <Table striped bordered hover variant="dark">
@@ -11,27 +12,20 @@ function Cart(props) {
             <th>#</th>
             <th>Name</th>
             <th>Quantity</th>
-            <th>Change</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {state.map((state, i) => {
+            return (
+              <tr key={i}>
+                <td>{state.id}</td>
+                <td>{state.name}</td>
+                <td>{state.quantity}</td>
+                <td>{state.price}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </>
@@ -39,7 +33,6 @@ function Cart(props) {
 }
 
 function storeToProps(state) {
-  console.log(state);
   return {
     state: state,
   };

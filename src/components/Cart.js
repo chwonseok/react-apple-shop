@@ -44,13 +44,27 @@ function Cart(props) {
           })}
         </tbody>
       </Table>
+      {props.alertMsg ? (
+        <div>
+          <p>the discount will be ended soon!</p>
+          <button
+            onClick={() => {
+              props.dispatch({ type: 'alertMsg' });
+            }}
+            className="btn btn-danger"
+          >
+            close
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }
 
-function storeToProps(state) {
+function storeToProps(store) {
   return {
-    state: state,
+    state: store.reducerBtn,
+    alertMsg: store.reducerAlert,
   };
 }
 

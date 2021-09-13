@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import App from './App';
 
 // STEP 1. Redux 세팅 ⬇️
@@ -13,14 +13,24 @@ import App from './App';
 
 // STEP 3. reducer(state변경 방식)의 결과(return 값)을 store에 넣어줌
 
-const defaultState = [
+const defAlert = true;
+
+function reducerAlert(state = defAlert, action) {
+  if (action.type === 'alertMsg') {
+    return (state = false);
+  } else {
+    return state;
+  }
+}
+
+const defState = [
   { id: 0, name: 'awesome shoes', quantity: 3, price: 120000 },
   { id: 1, name: 'strong shoes', quantity: 4, price: 80000 },
   { id: 2, name: 'cool shoes', quantity: 1, price: 100000 },
 ];
 
-function reducer(state = defaultState, action) {
-  const newState = [...defaultState];
+function reducerBtn(state = defState, action) {
+  const newState = [...defState];
   if (action.type === 'btnPlus') {
     newState[0].quantity++;
     return newState;
@@ -32,7 +42,7 @@ function reducer(state = defaultState, action) {
   }
 }
 
-const store = createStore(reducer);
+const store = createStore(combineReducers({ reducerBtn, reducerAlert }));
 
 ReactDOM.render(
   <BrowserRouter>

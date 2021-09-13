@@ -13,13 +13,26 @@ import App from './App';
 
 // STEP 3. reducer(state변경 방식)의 결과(return 값)을 store에 넣어줌
 
-const store = createStore(() => {
-  return [
-    { id: 0, name: 'awesome shoes', quantity: 3, price: 120000 },
-    { id: 1, name: 'strong shoes', quantity: 4, price: 80000 },
-    { id: 2, name: 'cool shoes', quantity: 1, price: 100000 },
-  ];
-});
+const defaultState = [
+  { id: 0, name: 'awesome shoes', quantity: 3, price: 120000 },
+  { id: 1, name: 'strong shoes', quantity: 4, price: 80000 },
+  { id: 2, name: 'cool shoes', quantity: 1, price: 100000 },
+];
+
+function reducer(state = defaultState, action) {
+  const newState = [...defaultState];
+  if (action.type === 'btnPlus') {
+    newState[0].quantity++;
+    return newState;
+  } else if (action.type === 'btnMinus' && newState[0].quantity > 0) {
+    newState[0].quantity--;
+    return newState;
+  } else {
+    return state;
+  }
+}
+
+const store = createStore(reducer);
 
 ReactDOM.render(
   <BrowserRouter>

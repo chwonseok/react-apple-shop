@@ -5,8 +5,9 @@ import Stock from './Stock';
 import TabContent from './TabContent';
 import { Nav } from 'react-bootstrap';
 import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 
-export default function Detail(props) {
+function Detail(props) {
   const { id } = useParams();
   const product = props.shoes.find((cur) => {
     return cur.id === +id;
@@ -28,6 +29,17 @@ export default function Detail(props) {
 
   function orderHandler() {
     props.setStock([9, 10, 11]);
+    props.dispatch({
+      type: 'addOrder',
+      payload: {
+        id: props.shoes.length,
+        // id: 1,
+        name: props.shoes[id].title,
+        quantity: 5,
+        price: props.shoes[id].price,
+      },
+    });
+    history.push('/cart');
   }
   function backHandler() {
     history.push('/');
@@ -111,3 +123,13 @@ export default function Detail(props) {
     </div>
   );
 }
+
+function storeToProps(store) {
+  return {
+    // 없어도 되는 듯? 있어야 하는 지 없어도 되는 지 정확히 모르겠음
+    // state: store.reducerBtn,
+    // alertMsg: store.reducerAlert,
+  };
+}
+
+export default connect(storeToProps)(Detail);

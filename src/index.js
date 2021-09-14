@@ -37,6 +37,17 @@ function reducerBtn(state = defState, action) {
   } else if (action.type === 'btnMinus' && newState[0].quantity > 0) {
     newState[0].quantity--;
     return newState;
+  } else if (action.type === 'addOrder') {
+    const test = newState.find((cur) => {
+      return cur.id === action.payload.id;
+    });
+    if (!test) {
+      newState.push(action.payload);
+    } else {
+      newState[test.id].quantity++;
+    }
+
+    return newState;
   } else {
     return state;
   }

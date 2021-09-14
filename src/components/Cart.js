@@ -1,8 +1,11 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-function Cart(props) {
+export default function Cart() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   return (
     <>
       <Table striped bordered hover variant="dark">
@@ -16,7 +19,7 @@ function Cart(props) {
           </tr>
         </thead>
         <tbody>
-          {props.state.map((state, i) => {
+          {state.reducerBtn.map((state, i) => {
             return (
               <tr key={i}>
                 <td>{state.id}</td>
@@ -26,14 +29,14 @@ function Cart(props) {
                 <td>
                   <button
                     onClick={() => {
-                      props.dispatch({ type: 'btnPlus' });
+                      dispatch({ type: 'btnPlus' });
                     }}
                   >
                     +
                   </button>
                   <button
                     onClick={() => {
-                      props.dispatch({ type: 'btnMinus' });
+                      dispatch({ type: 'btnMinus' });
                     }}
                   >
                     -
@@ -44,12 +47,12 @@ function Cart(props) {
           })}
         </tbody>
       </Table>
-      {props.alertMsg ? (
+      {state.reducerAlert ? (
         <div>
           <p>the discount will be ended soon!</p>
           <button
             onClick={() => {
-              props.dispatch({ type: 'alertMsg' });
+              dispatch({ type: 'alertMsg' });
             }}
             className="btn btn-danger"
           >
@@ -61,11 +64,9 @@ function Cart(props) {
   );
 }
 
-function storeToProps(store) {
-  return {
-    state: store.reducerBtn,
-    alertMsg: store.reducerAlert,
-  };
-}
-
-export default connect(storeToProps)(Cart);
+// function storeToProps(store) {
+//   return {
+//     // state: store.reducerBtn,
+//     // alertMsg: store.reducerAlert,
+//   };
+// }

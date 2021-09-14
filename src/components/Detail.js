@@ -41,6 +41,7 @@ function Detail(props) {
     });
     history.push('/cart');
   }
+
   function backHandler() {
     history.push('/');
     // history.goBack(); 이 코드도 같은 용도로 사용할 수 있음

@@ -29,14 +29,14 @@ export default function Cart() {
                 <td>
                   <button
                     onClick={() => {
-                      dispatch({ type: 'btnPlus' });
+                      dispatch({ type: 'btnPlus', num: state.id });
                     }}
                   >
                     +
                   </button>
                   <button
                     onClick={() => {
-                      dispatch({ type: 'btnMinus' });
+                      dispatch({ type: 'btnMinus', num: state.id });
                     }}
                   >
                     -

@@ -33,10 +33,9 @@ function Detail(props) {
       type: 'addOrder',
       payload: {
         id: props.shoes.length,
-        // id: 1,
-        name: props.shoes[id].title,
+        name: product.title,
         quantity: 5,
-        price: props.shoes[id].price,
+        price: product.price,
       },
     });
     history.push('/cart');

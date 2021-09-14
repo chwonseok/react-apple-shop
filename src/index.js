@@ -30,24 +30,24 @@ const defState = [
 ];
 
 function reducerBtn(state = defState, action) {
-  const newState = [...defState];
+  const newState = [...state];
   if (action.type === 'btnPlus') {
-    newState[0].quantity++;
+    newState[action.num].quantity++;
     return newState;
-  } else if (action.type === 'btnMinus' && newState[0].quantity > 0) {
-    newState[0].quantity--;
+  } else if (action.type === 'btnMinus' && newState[action.num].quantity > 0) {
+    newState[action.num].quantity--;
     return newState;
   } else if (action.type === 'addOrder') {
-    const test = newState.find((cur) => {
-      return cur.id === action.payload.id;
-    });
-    if (!test) {
-      newState.push(action.payload);
-    } else {
-      newState[test.id].quantity++;
-    }
+    const found = newState.findIndex((cur) => cur.id === action.payload.id);
 
-    return newState;
+    if (found >= 0) {
+      newState[found].quantity++;
+      return newState;
+    } else {
+      console.log(action.payload);
+      newState.push(action.payload);
+      return newState;
+    }
   } else {
     return state;
   }

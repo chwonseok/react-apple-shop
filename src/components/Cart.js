@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Cart() {
@@ -16,6 +16,7 @@ export default function Cart() {
             <th>Price</th>
             <th>Quantity</th>
             <th>More/Less</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -27,20 +28,36 @@ export default function Cart() {
                 <td>{state.price}</td>
                 <td>{state.quantity}</td>
                 <td>
-                  <button
+                  <Button
+                    variant="outline-light"
+                    size="sm"
                     onClick={() => {
                       dispatch({ type: 'btnPlus', num: state.id });
                     }}
                   >
                     +
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    className="ms-1"
+                    variant="outline-light"
+                    size="sm"
                     onClick={() => {
                       dispatch({ type: 'btnMinus', num: state.id });
                     }}
                   >
                     -
-                  </button>
+                  </Button>
+                </td>
+                <td>
+                  <Button
+                    variant="outline-light"
+                    size="sm"
+                    onClick={() => {
+                      dispatch({ type: 'btnRemove', num: state.id });
+                    }}
+                  >
+                    remove
+                  </Button>
                 </td>
               </tr>
             );

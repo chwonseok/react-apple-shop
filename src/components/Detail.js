@@ -76,7 +76,7 @@ function Detail(props) {
           <button className="btn btn-danger" onClick={orderHandler}>
             Order
           </button>
-          <button className="btn btn-danger" onClick={backHandler}>
+          <button className="btn btn-primary ms-2" onClick={backHandler}>
             Go back
           </button>
         </div>

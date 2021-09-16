@@ -44,10 +44,12 @@ function reducerBtn(state = defState, action) {
       newState[found].quantity++;
       return newState;
     } else {
-      console.log(action.payload);
       newState.push(action.payload);
       return newState;
     }
+  } else if (action.type === 'btnRemove') {
+    // newState
+    return newState;
   } else {
     return state;
   }

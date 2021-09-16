@@ -69,7 +69,7 @@ export default function Cart() {
           <p>the discount will be ended soon!</p>
           <button
             onClick={() => {
-              dispatch({ type: 'alertMsg' });
+              dispatch({ type: 'alertMsg', num: state.id });
             }}
             className="btn btn-danger"
           >

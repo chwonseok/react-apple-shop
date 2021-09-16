@@ -48,7 +48,7 @@ function reducerBtn(state = defState, action) {
       return newState;
     }
   } else if (action.type === 'btnRemove') {
-    // newState
+    newState.splice(action.num, 1);
     return newState;
   } else {
     return state;

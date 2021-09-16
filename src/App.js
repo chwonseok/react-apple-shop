@@ -10,6 +10,7 @@ import classes from './App.module.css';
 
 import Data from './db/data';
 import Cart from './components/Cart';
+import Practice from './components/Practice';
 
 export default function App() {
   const [shoes, setShoes] = useState(Data);
@@ -47,7 +48,10 @@ export default function App() {
               <Nav.Link as={Link} to="/cart">
                 Cart
               </Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <Nav.Link as={Link} to="/practice">
+                Practice
+              </Nav.Link>
+              {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
@@ -59,7 +63,7 @@ export default function App() {
                 <NavDropdown.Item href="#action/3.4">
                   Separated link
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -82,6 +86,11 @@ export default function App() {
         {/*** CART page ***/}
         <Route path="/cart">
           <Cart />
+        </Route>
+
+        {/*** PRACTICE page ***/}
+        <Route path="/practice">
+          <Practice />
         </Route>
 
         {/*** WRONG PATH page ***/}

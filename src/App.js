@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import Jumbotron from './components/Jumbotron';
 import Items from './components/Items';
-import Detail from './components/Detail';
 import classes from './App.module.css';
+// import Detail from './components/Detail';
 
 import Data from './db/data';
 import Cart from './components/Cart';
 import Practice from './components/Practice';
+
+const Detail = lazy(() => import('./components/Detail')); // lazy loading
 
 export default function App() {
   const [shoes, setShoes] = useState(Data);
@@ -80,7 +82,9 @@ export default function App() {
 
         {/*** DETAIL page ***/}
         <Route path="/detail/:id">
-          <Detail shoes={shoes} stock={stock} setStock={setStock} />
+          <Suspense fallback={<div>it's being loaded..</div>}>
+            <Detail shoes={shoes} stock={stock} setStock={setStock} />
+          </Suspense>
         </Route>
 
         {/*** CART page ***/}

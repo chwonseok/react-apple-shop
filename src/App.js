@@ -10,7 +10,7 @@ import classes from './App.module.css';
 
 import Data from './db/data';
 import Cart from './components/Cart';
-import Practice from './components/Practice';
+// import Practice from './components/Practice';
 
 const Detail = lazy(() => import('./components/Detail')); // lazy loading
 
@@ -50,9 +50,9 @@ export default function App() {
               <Nav.Link as={Link} to="/cart">
                 Cart
               </Nav.Link>
-              <Nav.Link as={Link} to="/practice">
+              {/* <Nav.Link as={Link} to="/practice">
                 Practice
-              </Nav.Link>
+              </Nav.Link> */}
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -93,9 +93,9 @@ export default function App() {
         </Route>
 
         {/*** PRACTICE page ***/}
-        <Route path="/practice">
+        {/* <Route path="/practice">
           <Practice />
-        </Route>
+        </Route> */}
 
         {/*** WRONG PATH page ***/}
         <Route path="/:id">

@@ -4,26 +4,20 @@ export default function Item({ data }) {
   const history = useHistory();
 
   function itemClickHandler() {
-    const lsData = JSON.parse(localStorage.getItem('shoes'));
+    history.push(`/detail/${data.id}`);
+
+    const lsData = localStorage.getItem('shoes');
 
     if (!lsData) {
       localStorage.setItem('shoes', JSON.stringify([data.id]));
     } else {
-      const preData = JSON.parse(localStorage.getItem('shoes'));
-      const condition = preData.find((el) => el === data.id);
-      if (condition) {
-        // 같은 게 있을 때
-        return preData;
-      } else {
-        // 같은 게 없을 때
-        preData.push(data.id);
-        localStorage.setItem('shoes', JSON.stringify(preData));
-      }
+      let lsArr = JSON.parse(lsData);
+      lsArr.push(data.id);
+      lsArr = new Set(lsArr);
+      lsArr = [...lsArr];
+      localStorage.setItem('shoes', JSON.stringify(lsArr));
     }
-    // JSON.stringify([data.id]);
-    // console.log(JSON.parse(localStorage.getItem('shoes')));
-
-    history.push(`/detail/${data.id}`);
+    console.log(lsData);
   }
 
   return (

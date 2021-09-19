@@ -8,7 +8,7 @@ export default function Cart() {
 
   return (
     <>
-      <Table striped bordered hover variant="dark">
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
@@ -29,7 +29,7 @@ export default function Cart() {
                 <td>{state.quantity}</td>
                 <td>
                   <Button
-                    variant="outline-light"
+                    variant="outline-dark"
                     size="sm"
                     onClick={() => {
                       dispatch({ type: 'btnPlus', num: state.id });
@@ -39,7 +39,7 @@ export default function Cart() {
                   </Button>
                   <Button
                     className="ms-1"
-                    variant="outline-light"
+                    variant="outline-dark"
                     size="sm"
                     onClick={() => {
                       dispatch({ type: 'btnMinus', num: state.id });
@@ -50,7 +50,7 @@ export default function Cart() {
                 </td>
                 <td>
                   <Button
-                    variant="outline-light"
+                    variant="outline-dark"
                     size="sm"
                     onClick={() => {
                       dispatch({ type: 'btnRemove', num: state.id });

@@ -124,9 +124,8 @@ function Detail(props) {
   );
 }
 
-function storeToProps(store) {
+function storeToProps() {
   return {
-    // 없어도 되는 듯? 있어야 하는 지 없어도 되는 지 정확히 모르겠음
     // state: store.reducerBtn,
     // alertMsg: store.reducerAlert,
   };
